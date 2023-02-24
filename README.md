@@ -28,7 +28,7 @@ with Session(service=service, backend=backend) as session:
 ``` 
 ## Possible fix
 
-It seems that the issue is relalted to the controlled circuit as the replacing for example
+It seems that the issue is related to the controlled circuit as the replacing for example
 
 ```python
 qc.compose(qc1.control(1), [0,1,2], inplace=True)
@@ -43,7 +43,7 @@ qc.compose(qc1, [1,2], inplace=True)
 fixes the problem. 
 
 ## Other fix
-Similarly creating the circuit following also works (see session_works.py)
+Similarly creating the circuit as below also works (see session_works.py)
 
 ```python
 qc01 = QuantumCircuit(2)
