@@ -40,7 +40,7 @@ qc.compose(qc1, [1,2], inplace=True)
 
 fixes the problem. 
 
-Similarly creating the circuit following
+Similarly creating the circuit following also works (see session_works.py)
 
 ```python
 qc01 = QuantumCircuit(2)
@@ -52,7 +52,7 @@ qc = QuantumCircuit(3)
 qc.compose(qc01.control(1), [0,1,2], inplace=True)
 ```
 
-also works. The same circuit execute fines locally when using
+The same circuit execute fines locally when using
 
 ```python
 from qiskit.primitives import  Session, Estimator
