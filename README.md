@@ -1,6 +1,6 @@
 ## Issue with controlled subcircuit and primitives
 
-the following code (see session.py) crashes
+The following code (see session.py) crashes
 
 ```python
 
@@ -26,6 +26,8 @@ with Session(service=service, backend=backend) as session:
     result = job.result()
     session.close()
 ``` 
+## Possible fix
+
 It seems that the issue is relalted to the controlled circuit as the replacing for example
 
 ```python
@@ -40,6 +42,7 @@ qc.compose(qc1, [1,2], inplace=True)
 
 fixes the problem. 
 
+## Other fix
 Similarly creating the circuit following also works (see session_works.py)
 
 ```python
@@ -51,12 +54,4 @@ qc01.compose(qc1, [0,1], inplace=True)
 qc = QuantumCircuit(3)
 qc.compose(qc01.control(1), [0,1,2], inplace=True)
 ```
-
-The same circuit execute fines locally when using
-
-```python
-from qiskit.primitives import  Session, Estimator
-```
-
-instead of the runtime library
 
