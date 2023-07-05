@@ -3,6 +3,8 @@
 The backends defined through the `Aer` estimator as:
 
 ```python
+from qiskit_aer.primitives import Estimator as AerEstimator
+
 device = FakeGuadalupe()
 seed = 170
 coupling_map = device.configuration().coupling_map
@@ -21,6 +23,8 @@ estimator_fake = AerEstimator(
 and a backend defined via the `BackendEstimator`
 
 ```python
+from qiskit.primitives import BackendEstimator
+device = FakeGuadalupe()
 estimator_fake_2 = BackendEstimator(device)
 ```
 
