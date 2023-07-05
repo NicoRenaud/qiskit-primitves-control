@@ -4,6 +4,8 @@ from qiskit_ibm_runtime import QiskitRuntimeService, Session, Estimator, Options
 from qiskit import QuantumCircuit
 from qiskit.circuit.library import StatePreparation
 import numpy as  np
+from qiskit import qpy 
+
 
 
 
@@ -17,6 +19,15 @@ vector = vector.tolist()
 qc = QuantumCircuit(2)
 qc.prepare_state(vector)
 
+
+with open('state_prep.qpy','wb') as fd:
+    qpy.dump(qc, fd)
+
+
+with open('state_prep.qpy','rb') as fd:
+    new_qc = qpy.load(fd)[0]
+
+exit()
 # # create the circuit
 # qc_prep = StatePreparation(vector, num_qubits=None)
 # circuit = QuantumCircuit(2)
@@ -36,6 +47,7 @@ backend = "ibmq_qasm_simulator"
 backend = "simulator_statevector"
 
 service = QiskitRuntimeService()
+service = None
 with Session(service=service, backend=backend) as session:
     estimator = Estimator(session=session, options=options)
     job = estimator.run(qc, observable)
